@@ -32,9 +32,23 @@ function getData() {
                   childKey = childSnapshot.key;
                   Room_names = childKey;
                   //Start code
-
+                  console.log("room names-"+ Room_names)
+                  row = "<div id = '"+Room_names+"' class = 'room_name' onclick = 'redirect(this.id)'>"+Room_names + "</div><hr>"
+                  document.getElementById("output").innerHTML += row
                   //End code
             });
       });
 }
 getData();
+
+function redirect(current_room){
+      console.log(current_room)
+      localStorage.setItem("Room_name", current_room)
+      window.location = "kwitter_page.html"
+}
+
+function logout(){
+      localStorage.removeItem("user")
+      localStorage.removeItem("Room_name")
+      window.location = "index.html"
+}
